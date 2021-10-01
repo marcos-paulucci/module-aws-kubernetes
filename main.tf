@@ -124,14 +124,13 @@ resource "local_file" "kubeconfig" {
 apiVersion: v1
 clusters:
 - cluster:
-    "certificate-authority-data: >
-   ${aws_eks_cluster.ms-up-running.certificate_authority.0.data}"
-    server: ${aws_eks_cluster.ms-up-running.endpoint}
+  "certificate-authority-data:${aws_eks_cluster.ms-up-running.certificate_authority.0.data}"
+  server: ${aws_eks_cluster.ms-up-running.endpoint}
   name: ${aws_eks_cluster.ms-up-running.arn}
 contexts:
 - context:
-    cluster: ${aws_eks_cluster.ms-up-running.arn}
-    user: ${aws_eks_cluster.ms-up-running.arn}
+  cluster: ${aws_eks_cluster.ms-up-running.arn}
+  user: ${aws_eks_cluster.ms-up-running.arn}
   name: ${aws_eks_cluster.ms-up-running.arn}
 current-context: ${aws_eks_cluster.ms-up-running.arn}
 kind: Config
